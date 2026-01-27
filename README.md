@@ -189,21 +189,13 @@ python -m pytest -q
 
 Troubleshooting
 
-
 If you see JSON decode errors using curl.exe -d ... in PowerShell, use:
-
 
 Invoke-RestMethod, or
 
-
 --data-binary @file with a UTF-8 file (examples above).
 
-
-
-
 If migrations don’t apply, confirm DB is reachable and tables exist via \dt.
-
-
 
 Si querés, próximo paso concreto: “pulir” README con 1 bloque “Run in 3 commands” bien corto (sin ejemplos largos) y dejar los ejemplos webhook/sync como “Appendix: PowerShell-safe examples” para que no quede kilométrico.
 ::contentReference[oaicite:1]{index=1}
