@@ -1,5 +1,4 @@
 ##+++ b/docker/docker-compose.yml
-@@ -0,0 +1,23 @@
 services:
   db:
     image: postgres:16

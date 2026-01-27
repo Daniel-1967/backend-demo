@@ -26,7 +26,7 @@ def _pick(*keys: str) -> str | None:
     return None
 
 
-@lru_cache()
+@lru_cache()    
 def get_settings() -> dict:
     # Keep this repo domain-agnostic and safe for public use.
     return {
@@ -34,13 +34,22 @@ def get_settings() -> dict:
         "ENV": _pick("ENV") or "local",
         "LOG_LEVEL": _pick("LOG_LEVEL") or "INFO",
         "DB_URL": _pick("DB_URL", "DATABASE_URL"),
+        "API_KEYS_SEED_FILE": _pick("API_KEYS_SEED_FILE") or "scripts/seeds/api_keys.csv",
+        "WEBHOOK_SECRET": _pick("WEBHOOK_SECRET"),
+        "ERP_BASE_URL": _pick("ERP_BASE_URL") or "http://127.0.0.1:8000/v1/_mock/erp",        
         "API_BASE_PATH": _pick("API_BASE_PATH") or "/v1",
         "OPENAPI_PATH": _pick("OPENAPI_PATH") or "/v1/openapi.json",
         "ALLOWED_ORIGINS": _pick("ALLOWED_ORIGINS") or "http://localhost:3000",
         "ENABLE_HEALTH_ROOT": (_pick("ENABLE_HEALTH_ROOT") or "false").lower() in ("1", "true", "yes"),
+        "WEBHOOK_SECRET": _pick("WEBHOOK_SECRET"),        
         # Optional (used only if you enable the AI provider module later)
         "OPENAI_API_KEY": _pick("OPENAI_API_KEY"),
         "OPENAI_MODEL": _pick("OPENAI_MODEL") or "gpt-4.1-mini",
+
+        # Outbound integration demo (ERP-like)
+        "ERP_BASE_URL": _pick("ERP_BASE_URL") or "http://127.0.0.1:8000/v1/_mock/erp",
+        "ERP_TIMEOUT_S": float(_pick("ERP_TIMEOUT_S") or "5"),
+        "ERP_RETRIES": int(_pick("ERP_RETRIES") or "3"),        
     }
 
 
