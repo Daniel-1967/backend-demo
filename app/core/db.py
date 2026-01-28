@@ -12,6 +12,15 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from app.core.config import get_settings
 
+from collections.abc import Generator
+
+def get_db() -> Generator:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
 
 @lru_cache()
 def get_engine() -> Engine:

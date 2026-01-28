@@ -45,7 +45,20 @@ def get_settings() -> dict:
         # Optional (used only if you enable the AI provider module later)
         "OPENAI_API_KEY": _pick("OPENAI_API_KEY"),
         "OPENAI_MODEL": _pick("OPENAI_MODEL") or "gpt-4.1-mini",
+        "OPENAI_TIMEOUT_S": int(_pick("OPENAI_TIMEOUT_S") or "30"),        
+        # Optional (WhatsApp Cloud API)
+        "WA_BASE_URL": _pick("WA_BASE_URL") or "https://graph.facebook.com",
+        "WA_API_VERSION": _pick("WA_API_VERSION") or "v20.0",
+        "WA_PHONE_NUMBER_ID": _pick("WA_PHONE_NUMBER_ID"),
+        "WA_ACCESS_TOKEN": _pick("WA_ACCESS_TOKEN"),
+        "WA_VERIFY_TOKEN": _pick("WA_VERIFY_TOKEN") or "change_me",
+        # If set, validate Meta webhooks signature header X-Hub-Signature-256
+        "WA_APP_SECRET": _pick("WA_APP_SECRET"),
 
+        # Optional (SAP OData)
+        "SAP_BASE_URL": _pick("SAP_BASE_URL"),
+        "SAP_USER": _pick("SAP_USER"),
+        "SAP_PASSWORD": _pick("SAP_PASSWORD"),
         # Outbound integration demo (ERP-like)
         "ERP_BASE_URL": _pick("ERP_BASE_URL") or "http://127.0.0.1:8000/v1/_mock/erp",
         "ERP_TIMEOUT_S": float(_pick("ERP_TIMEOUT_S") or "5"),
