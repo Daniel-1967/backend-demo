@@ -52,7 +52,7 @@ uvicorn app.main:app --reload
     Health: GET http://127.0.0.1:8000/v1/health
     OpenAPI: http://127.0.0.1:8000/docs
 
-##Repo structure (high-level)
+## Repo structure (high-level)
 
     app/main.py — FastAPI bootstrap + router registration
     app/api/routers/health.py — GET /v1/health
