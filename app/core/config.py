@@ -43,6 +43,8 @@ def get_settings() -> dict:
         "ENABLE_HEALTH_ROOT": (_pick("ENABLE_HEALTH_ROOT") or "false").lower() in ("1", "true", "yes"),
         "WEBHOOK_SECRET": _pick("WEBHOOK_SECRET"),        
         # Optional (used only if you enable the AI provider module later)
+        # GPT_MODE: auto|demo|real  (auto => demo if OPENAI_API_KEY not set)
+        "GPT_MODE": _pick("GPT_MODE") or "auto",        
         "OPENAI_API_KEY": _pick("OPENAI_API_KEY"),
         "OPENAI_MODEL": _pick("OPENAI_MODEL") or "gpt-4.1-mini",
         "OPENAI_TIMEOUT_S": int(_pick("OPENAI_TIMEOUT_S") or "30"),        

@@ -8,9 +8,7 @@ from fastapi import APIRouter, Depends
 from app.api.deps import require_api_key
 from app.integrations.gpt_collection import analyze
 
-from app.core.db import get_db
-
-router = APIRouter(prefix="/v1", tags=["gpt"])
+router = APIRouter(tags=["gpt"])
 
 
 @router.post("/integrations/gpt/collection/analyze")
